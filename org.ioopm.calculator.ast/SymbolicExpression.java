@@ -1,9 +1,10 @@
-package org.ioopm.calculator.ast; /// could place this in parser *for now*
+ /// could place this in parser *for now*
 
 public abstract class SymbolicExpression {
   private String name; 
   private String[] subExpressions;
-  /// The second argument allows us to pass in 0 or more arguments
+  
+/*  /// The second argument allows us to pass in 0 or more arguments
   public SymbolicExpression(String name, Object[]  subExpressions) {
     this.name = name;
     this.subExpressions = new String[subExpressions.length];
@@ -25,5 +26,5 @@ public abstract class SymbolicExpression {
     }
     sb.append(")");
     return sb.toString(); 
-  }
+  }*/
 }
