@@ -3,5 +3,4 @@
 public class Binary extends Assignment{
 	private SymbolicExpression lhs;
 	private SymbolicExpression rhs;
-	
 }
