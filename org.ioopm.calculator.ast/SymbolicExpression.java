@@ -31,4 +31,9 @@ public abstract class SymbolicExpression {
   public Boolean isConstant() {
     return false;
   }
+
+  public String getName() {
+    throw new RuntimeException("getName() called on expression with no operator");
+  }
+
 }
