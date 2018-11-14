@@ -27,4 +27,8 @@ public abstract class SymbolicExpression {
     sb.append(")");
     return sb.toString(); 
   }
+
+  public Boolean isConstant() {
+    return false;
+  }
 }
