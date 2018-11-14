@@ -4,8 +4,8 @@ public abstract class SymbolicExpression {
   private String name; 
   private String[] subExpressions;
   
-/*  /// The second argument allows us to pass in 0 or more arguments
-  public SymbolicExpression(String name, Object[]  subExpressions) {
+ /// The second argument allows us to pass in 0 or more arguments
+  public SymbolicExpression(String name, Object... subExpressions) {
     this.name = name;
     this.subExpressions = new String[subExpressions.length];
     for (int i = 0; i < subExpressions.length; ++i) {
@@ -26,5 +26,5 @@ public abstract class SymbolicExpression {
     }
     sb.append(")");
     return sb.toString(); 
-  }*/
+  }
 }
