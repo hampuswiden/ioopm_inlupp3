@@ -36,4 +36,11 @@ public abstract class SymbolicExpression {
     throw new RuntimeException("getName() called on expression with no operator");
   }
 
+  public int getPriority() {
+    return 10;
+  }
+
+  public Double getValue() {
+    throw new RuntimeException("getValue() called on non-constant value");
+  }
 }

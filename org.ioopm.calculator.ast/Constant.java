@@ -10,4 +10,8 @@ public class Constant extends Atom{
 	public Boolean isConstant() {
 		return true;
 	}
+
+	public Double getValue() {
+    	return this.value;
+  	}
 }
