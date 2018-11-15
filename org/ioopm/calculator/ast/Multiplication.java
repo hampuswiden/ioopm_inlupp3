@@ -5,7 +5,7 @@ public class Multiplication extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super(lhs, rhs);
+		super("Multiplication", lhs, rhs);
 	}
 
 	public String getName() {

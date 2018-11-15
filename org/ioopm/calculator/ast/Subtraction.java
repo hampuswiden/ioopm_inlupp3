@@ -5,7 +5,7 @@ public class Subtraction extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Subtraction(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super(lhs, rhs);
+		super("Subtraction", lhs, rhs);
 	}
 
 	public String getName() {

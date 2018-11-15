@@ -5,7 +5,7 @@ public class Division extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Division(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super(lhs, rhs);
+		super("Division",lhs, rhs);
 	}
 
 	public String getName() {

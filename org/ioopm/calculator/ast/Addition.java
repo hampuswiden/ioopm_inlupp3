@@ -5,7 +5,7 @@ public class Addition extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Addition(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super(lhs, rhs);
+		super("Addition", lhs, rhs);
 	}
 
 	public String getName() {

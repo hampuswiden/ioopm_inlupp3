@@ -4,7 +4,7 @@ public class Log extends Unary{
 	private SymbolicExpression arg;
 	
 	public Log(SymbolicExpression arg) {
-		super(arg);
+		super("Log" ,arg);
 	}
 
 	public String getName() {

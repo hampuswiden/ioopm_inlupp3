@@ -14,7 +14,7 @@ public abstract class SymbolicExpression {
   }
 
   /// Returns e.g., "Constant(42)" if name is "Constant" and subExpressions is ["42"]
-  public String toString(String msg) {
+  public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append(this.name);
     sb.append("(");

@@ -7,4 +7,7 @@ public class Variable extends Atom {
 		super(value);
 	}
 	
+	public String toString() {
+		return this.value;
+	}
 }
