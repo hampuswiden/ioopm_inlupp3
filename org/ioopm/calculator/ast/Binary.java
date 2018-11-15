@@ -28,6 +28,5 @@ public abstract class Binary extends Assignment{
 		}
 		
 		return returnString;
-		
 	}
 }
