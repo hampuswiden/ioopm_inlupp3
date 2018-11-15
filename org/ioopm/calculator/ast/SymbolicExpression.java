@@ -1,4 +1,4 @@
-//package org.ioopm.calculator.ast; /// could place this in parser *for now*
+package org.ioopm.calculator.ast;
 
 public abstract class SymbolicExpression {
   private String name; 
@@ -43,4 +43,14 @@ public abstract class SymbolicExpression {
   public Double getValue() {
     throw new RuntimeException("getValue() called on non-constant value");
   }
+
+  public void testPrinting(String expected, SymbolicExpression e) {
+    if (expected.equals("" + e)) {
+      System.out.println("Passed: " + e);
+    } 
+    else {
+      System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+    }
+  }
+  
 }
