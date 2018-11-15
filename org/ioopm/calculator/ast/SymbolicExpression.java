@@ -44,12 +44,12 @@ public abstract class SymbolicExpression {
     throw new RuntimeException("getValue() called on non-constant value");
   }
 
-  public void testPrinting(String expected, SymbolicExpression e) {
-    if (expected.equals("" + e)) {
-      System.out.println("Passed: " + e);
+  public void testPrinting(String expected) {
+    if (expected.equals("" + this)) {
+      System.out.println("Passed: " + this);
     } 
     else {
-      System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+      System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
     }
   }
   

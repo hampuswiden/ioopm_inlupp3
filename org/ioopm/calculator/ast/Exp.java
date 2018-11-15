@@ -5,6 +5,7 @@ public class Exp extends Unary{
 	
 	public Exp(SymbolicExpression arg) {
 		super("Exp" ,arg);
+		this.arg = arg;
 	}
 
 	public String getName() {

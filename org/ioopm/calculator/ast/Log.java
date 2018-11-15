@@ -5,6 +5,7 @@ public class Log extends Unary{
 	
 	public Log(SymbolicExpression arg) {
 		super("Log" ,arg);
+		this.arg = arg;
 	}
 
 	public String getName() {

@@ -5,5 +5,6 @@ public abstract class Unary extends Assignment{
 	
 	public Unary(String function, SymbolicExpression arg) {
 		super(function, arg);
+		this.arg = arg;
 	}
 }

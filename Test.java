@@ -7,8 +7,8 @@ public class Test {
 		Constant c2 = new Constant(2);
 		Variable v = new Variable("x");
 		Addition a = new Addition(c1, v);
-		//Multiplication m = new Multiplication(a, c2);
+		Multiplication m = new Multiplication(a, c2);
 
-		//c1.testPrinting("(5 + x) * 2", a);
+		m.testPrinting("(5.0 + x) * 2.0");
 	}
 }

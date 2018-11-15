@@ -5,5 +5,6 @@ public class Vars extends Command{
 	
 	public Vars(String arg) {
 		super(arg);
+		this.arg = arg;
 	}
 }

@@ -5,6 +5,7 @@ public class Constant extends Atom{
 	
 	public Constant(double value) {
 		super(value);
+		this.value = value;
 	}
 
 	public Boolean isConstant() {

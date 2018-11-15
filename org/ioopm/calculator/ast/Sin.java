@@ -5,6 +5,7 @@ public class Sin extends Unary{
 	
 	public Sin(SymbolicExpression arg) {
 		super("Sin" ,arg);
+		this.arg = arg;
 	}
 
 	public String getName() {

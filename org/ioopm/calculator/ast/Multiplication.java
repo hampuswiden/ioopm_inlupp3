@@ -6,6 +6,8 @@ public class Multiplication extends Binary {
 	
 	public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
 		super("Multiplication", lhs, rhs);
+		this.lhs = lhs;
+		this.rhs = rhs;
 	}
 
 	public String getName() {

@@ -5,5 +5,6 @@ public abstract class Command extends SymbolicExpression{
 	
 	public Command(String arg) {
 		super("Command", arg);
+		this.arg = arg;
 	}
 }

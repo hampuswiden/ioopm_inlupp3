@@ -5,5 +5,6 @@ public class Quit extends Command{
 	
 	public Quit(String arg) {
 		super(arg);
+		this.arg = arg;
 	}
 }

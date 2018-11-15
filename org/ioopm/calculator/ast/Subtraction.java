@@ -6,6 +6,8 @@ public class Subtraction extends Binary {
 	
 	public Subtraction(SymbolicExpression lhs, SymbolicExpression rhs) {
 		super("Subtraction", lhs, rhs);
+		this.lhs = lhs;
+		this.rhs = rhs;
 	}
 
 	public String getName() {
