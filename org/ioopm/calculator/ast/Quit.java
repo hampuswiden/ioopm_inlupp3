@@ -7,4 +7,17 @@ public class Quit extends Command{
 		super(arg);
 		this.arg = arg;
 	}
+	
+	public boolean equals(Object other) {
+	    if (other instanceof Quit) {
+	        return this.equals((Quit) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Quit other) {
+	    /// access a private field of other!
+	    return this.arg.equals(other.arg);
+	}
 }

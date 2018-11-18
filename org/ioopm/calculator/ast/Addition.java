@@ -17,4 +17,34 @@ public class Addition extends Binary {
 	public int getPriority() {
     	return 4;
   	}
+	
+	public boolean equals(Object other) {
+	    if (other instanceof Addition) {
+	        return this.equals((Addition) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Addition other) {
+	    /// access a private field of other!
+		/// Checks both sides, since multiplication can be written two ways with same result
+	    boolean[] sideCheck = {false, false};
+	    
+	    if(this.lhs.equals(this.lhs)) {
+	    	sideCheck[0] = true;
+	    }
+	    else if(this.lhs.equals(this.rhs)) {
+	    	sideCheck[1] = true;
+	    }
+	    
+	    if(this.rhs.equals(this.lhs) && sideCheck[0]==false) {
+	    	sideCheck[0] = true;
+	    }
+	    else if(this.rhs.equals(this.rhs) && sideCheck[1]==false) {
+	    	sideCheck[1] = true;
+	    }
+	    
+	    return sideCheck[0] && sideCheck[1]; 
+	}
 }

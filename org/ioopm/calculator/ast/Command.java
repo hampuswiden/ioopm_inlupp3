@@ -7,4 +7,17 @@ public abstract class Command extends SymbolicExpression{
 		super("Command", arg);
 		this.arg = arg;
 	}
+	
+	public boolean equals(Object other) {
+	    if (other instanceof Command) {
+	        return this.equals((Command) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Command other) {
+	    /// access a private field of other!
+		return this.arg.equals(other.arg);
+	}
 }
