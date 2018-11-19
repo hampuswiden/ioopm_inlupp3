@@ -26,7 +26,6 @@ public abstract class Binary extends Assignment{
 		else {
 			returnString += this.rhs.toString();
 		}
-		
 		return returnString;
 	}
 }

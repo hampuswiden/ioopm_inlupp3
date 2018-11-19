@@ -17,4 +17,17 @@ public class Division extends Binary {
 	public int getPriority() {
     	return 8;
   	}
+	
+	public boolean equals(Object other) {
+	    if (other instanceof Division) {
+	        return this.equals((Division) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Division other) {
+	    /// access a private field of other!
+		return (this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs));
+	}
 }

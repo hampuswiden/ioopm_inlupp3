@@ -44,6 +44,7 @@ public abstract class SymbolicExpression {
     throw new RuntimeException("getValue() called on non-constant value");
   }
 
+  //Test
   public void testPrinting(String expected) {
     if (expected.equals("" + this)) {
       System.out.println("Passed: " + this);
@@ -62,4 +63,20 @@ public abstract class SymbolicExpression {
     }
 }
   
+  public boolean equals(Object other) {
+	  return false;
+  }
+  
+  public SymbolicExpression eval() {
+	  return new Constant(5);
+  }
+  
+  public void testEvaluating(SymbolicExpression expected, SymbolicExpression e) {
+	    SymbolicExpression r = e.eval();
+	    if (r.equals(expected)) {
+	        System.out.println("Passed: " + e);
+	    } else {
+	        System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+	    }
+	}
 }

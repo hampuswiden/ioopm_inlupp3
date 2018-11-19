@@ -17,4 +17,17 @@ public class Subtraction extends Binary {
 	public int getPriority() {
     	return 4;
   	}
+	
+	public boolean equals(Object other) {
+	    if (other instanceof Subtraction) {
+	        return this.equals((Subtraction) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Subtraction other) {
+	    /// access a private field of other!
+		return (this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs));
+	}
 }
