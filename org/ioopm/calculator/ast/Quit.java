@@ -20,4 +20,12 @@ public class Quit extends Command{
 	    /// access a private field of other!
 	    return this.arg.equals(other.arg);
 	}
+
+	public String getName() {
+		return "Quit";
+	}
+
+	public String toString() {
+		return super.toString();
+	}
 }

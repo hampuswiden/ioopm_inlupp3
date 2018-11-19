@@ -20,4 +20,12 @@ public class Vars extends Command{
 	    /// access a private field of other!
 	    return this.arg.equals(other.arg);
 	}
+
+	public String getName() {
+		return "Vars";
+	}
+
+	public String toString() {
+		return super.toString();
+	}
 }

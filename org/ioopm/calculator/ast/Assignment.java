@@ -4,16 +4,10 @@ public class Assignment extends SymbolicExpression{
 	private SymbolicExpression lhs;
 	private SymbolicExpression rhs;
 	
-	public Assignment(String operator, SymbolicExpression lhs, SymbolicExpression rhs) {
-		super(operator, lhs, rhs);
-		this.lhs = lhs;
-		this.rhs = rhs;
+	public Assignment(SymbolicExpression expression, SymbolicExpression identifier) {
+		// Expression = Identifier
+		super("Assignment", expression, identifier);
+		this.lhs = expression;
+		this.rhs = identifier;
 	}
-	
-	public Assignment(String function, SymbolicExpression lhs) {
-		super(function, lhs);
-		this.lhs = lhs;
-		this.rhs = null;
-	}
-	
 }

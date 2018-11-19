@@ -31,20 +31,24 @@ public class Addition extends Binary {
 		/// Checks both sides, since multiplication can be written two ways with same result
 	    boolean[] sideCheck = {false, false};
 	    
-	    if(this.lhs.equals(this.lhs)) {
+	    if(this.lhs.equals(other.lhs)) {
 	    	sideCheck[0] = true;
 	    }
-	    else if(this.lhs.equals(this.rhs)) {
+	    else if(this.lhs.equals(other.rhs)) {
 	    	sideCheck[1] = true;
 	    }
 	    
-	    if(this.rhs.equals(this.lhs) && sideCheck[0]==false) {
+	    if(this.rhs.equals(other.lhs) && sideCheck[0]==false) {
 	    	sideCheck[0] = true;
 	    }
-	    else if(this.rhs.equals(this.rhs) && sideCheck[1]==false) {
+	    else if(this.rhs.equals(other.rhs) && sideCheck[1]==false) {
 	    	sideCheck[1] = true;
 	    }
 	    
 	    return sideCheck[0] && sideCheck[1]; 
+	}
+
+	public String toString() {
+		return super.toString();
 	}
 }

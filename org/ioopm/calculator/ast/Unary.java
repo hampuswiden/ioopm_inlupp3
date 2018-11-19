@@ -1,6 +1,6 @@
 package org.ioopm.calculator.ast;
 
-public abstract class Unary extends Assignment{
+public abstract class Unary extends SymbolicExpression{
 	private SymbolicExpression arg;
 	
 	public Unary(String function, SymbolicExpression arg) {
@@ -9,7 +9,7 @@ public abstract class Unary extends Assignment{
 	}
 	
 	public String toString() {
-		return this.arg.getName() + "(" + this.arg.toString() + ")";
+		return this.getName() + "(" + this.arg.toString() + ")";
 	}
 	
 	public boolean equals(Object other) {

@@ -14,14 +14,13 @@ public class Log extends Unary{
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Log) {
-	        return this.equals((Log) other);
+	        return super.equals(other);
 	    } else {
 	        return false;
 	    }
 	}
 
-	public boolean equals(Log other) {
-	    /// access a private field of other!
-	    return this.arg.equals(other.arg);
+	public String toString() {
+		return super.toString();
 	}
 }

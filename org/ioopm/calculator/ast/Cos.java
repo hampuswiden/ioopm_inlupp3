@@ -14,14 +14,13 @@ public class Cos extends Unary{
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Cos) {
-	        return this.equals((Cos) other);
+	        return super.equals(other);
 	    } else {
 	        return false;
 	    }
 	}
 
-	public boolean equals(Cos other) {
-	    /// access a private field of other!
-		return this.arg.equals(other.arg);
+	public String toString() {
+		return super.toString();
 	}
 }

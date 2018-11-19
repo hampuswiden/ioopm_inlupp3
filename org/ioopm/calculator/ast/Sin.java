@@ -14,14 +14,13 @@ public class Sin extends Unary{
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Sin) {
-	        return this.equals((Sin) other);
+	        return super.equals(other);
 	    } else {
 	        return false;
 	    }
 	}
 
-	public boolean equals(Sin other) {
-	    /// access a private field of other!
-	    return this.arg.equals(other.arg);
+	public String toString() {
+		return super.toString();
 	}
 }

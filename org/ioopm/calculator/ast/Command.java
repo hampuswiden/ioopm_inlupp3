@@ -20,4 +20,8 @@ public abstract class Command extends SymbolicExpression{
 	    /// access a private field of other!
 		return this.arg.equals(other.arg);
 	}
+
+	public String toString() {
+		return this.getName();
+	}
 }

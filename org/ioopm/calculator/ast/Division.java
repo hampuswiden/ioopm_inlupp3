@@ -30,4 +30,8 @@ public class Division extends Binary {
 	    /// access a private field of other!
 		return (this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs));
 	}
+
+	public String toString() {
+		return super.toString();
+	}
 }

@@ -14,14 +14,13 @@ public class Exp extends Unary{
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Exp) {
-	        return this.equals((Exp) other);
+	        return super.equals(other);
 	    } else {
 	        return false;
 	    }
 	}
 
-	public boolean equals(Exp other) {
-	    /// access a private field of other!
-	    return this.arg.equals(other.arg);
+	public String toString() {
+		return super.toString();
 	}
 }

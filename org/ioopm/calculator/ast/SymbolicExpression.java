@@ -53,30 +53,21 @@ public abstract class SymbolicExpression {
       System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
     }
   }
-
-  public void testEvaluating(double expected) {
+  
+  public void testEvaluating(SymbolicExpression expected) {
     SymbolicExpression r = this.eval();
-    if (r.isConstant() && r.getValue() == expected) {
+    if (r.equals(expected)) {
         System.out.println("Passed: " + this);
     } else {
         System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
     }
-}
+	}
   
   public boolean equals(Object other) {
-	  return false;
+    return false;
   }
   
   public SymbolicExpression eval() {
-	  return new Constant(5);
+    return new Constant(5);
   }
-  
-  public void testEvaluating(SymbolicExpression expected, SymbolicExpression e) {
-	    SymbolicExpression r = e.eval();
-	    if (r.equals(expected)) {
-	        System.out.println("Passed: " + e);
-	    } else {
-	        System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
-	    }
-	}
 }
