@@ -52,5 +52,14 @@ public abstract class SymbolicExpression {
       System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
     }
   }
+
+  public void testEvaluating(double expected) {
+    SymbolicExpression r = this.eval();
+    if (r.isConstant() && r.getValue() == expected) {
+        System.out.println("Passed: " + this);
+    } else {
+        System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
+    }
+}
   
 }
