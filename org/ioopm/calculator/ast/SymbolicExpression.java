@@ -4,6 +4,10 @@ import java.util.HashMap;
 public abstract class SymbolicExpression {
   private String name; 
   private String[] subExpressions;
+
+  public SymbolicExpression() {
+
+  }
   
  /// The second argument allows us to pass in 0 or more arguments
   public SymbolicExpression(String name, Object... subExpressions) {
@@ -37,8 +41,10 @@ public abstract class SymbolicExpression {
     throw new RuntimeException("getName() called on expression with no operator");
   }
 
-  public int getPriority();
- 
+  public int getPriority()
+  {
+    return 10;
+  }
 
   public double getValue() {
     throw new RuntimeException("getValue() called on non-constant value");
@@ -56,10 +62,11 @@ public abstract class SymbolicExpression {
   
   public void testEvaluating(SymbolicExpression expected, Environment vars) {
     SymbolicExpression r = this.eval(vars);
-    if (r.equals(expected)) {
-        System.out.println("Passed: " + this);
+    SymbolicExpression e = expected.eval(vars);
+    if (r.equals(e)) {
+        System.out.println("Passed: " + r);
     } else {
-        System.out.println("Error: expected '" + expected + "' but got '" + this + "'");
+        System.out.println("Error: expected '" + e + "' but got '" + r + "'");
     }
 	}
   

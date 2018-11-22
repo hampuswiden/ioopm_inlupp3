@@ -40,7 +40,7 @@ public class Assignment extends SymbolicExpression{
 	
 	public SymbolicExpression eval(Environment vars) {
 	    SymbolicExpression lhs = this.lhs.eval(vars);
-	    vars.put((Variable) rhs, lhs);
-	    return new Assignment(lhs, rhs);
+	    vars.put((Variable) this.rhs, lhs);
+	    return lhs;
 	}
 }

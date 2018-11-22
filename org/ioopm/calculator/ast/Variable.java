@@ -4,6 +4,7 @@ public class Variable extends Atom {
 	private String value;
 	
 	public Variable(String value) {
+		super();
 		this.value = value;
 	}
 	
@@ -30,7 +31,16 @@ public class Variable extends Atom {
 	}
 	
 	public SymbolicExpression eval(Environment vars) {
-		vars.get(this);
-		return new Variable(value);
+		SymbolicExpression value =  vars.get(this);
+		if (value instanceof SymbolicExpression)
+		{
+			return value;
+		}
+		return new Variable(this.value);
 	}
+
+	@Override
+	public int hashCode() {
+		return this.value.hashCode();
+	} 
 }
