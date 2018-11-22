@@ -1,23 +1,26 @@
 package org.ioopm.calculator.ast;
 
-public class Constant extends Atom{
+public class Constant extends Atom {
 	private double value;
 	
 	public Constant(double value) {
-		super(value);
 		this.value = value;
 	}
 
-	public Boolean isConstant() {
+	public boolean isConstant() {
 		return true;
 	}
 
-	public Double getValue() {
+	public double getValue() {
     	return this.value;
   	}
 	
 	public String toString() {
 		return "" + this.value;
+	}
+	
+	public String getName() {
+		return "constant";
 	}
 	
 	public boolean equals(Object other) {
@@ -31,5 +34,9 @@ public class Constant extends Atom{
 	public boolean equals(Constant other) {
 	    /// access a private field of other!
 	    return this.value == other.value;
+	}
+	
+	public SymbolicExpression eval(Environment vars) { 
+		return new Constant(this.getValue());
 	}
 }

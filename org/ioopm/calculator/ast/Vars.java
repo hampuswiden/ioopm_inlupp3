@@ -28,4 +28,8 @@ public class Vars extends Command{
 	public String toString() {
 		return super.toString();
 	}
+	
+	public SymbolicExpression eval(Environment vars) {
+	    throw new RuntimeException("eval called on command");
+	  }
 }

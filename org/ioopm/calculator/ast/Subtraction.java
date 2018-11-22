@@ -34,4 +34,14 @@ public class Subtraction extends Binary {
 	public String toString() {
 		return super.toString();
 	}
+	
+	public SymbolicExpression eval(Environment vars) {
+	    SymbolicExpression lhs = this.lhs.eval(vars);
+	    SymbolicExpression rhs = this.rhs.eval(vars);
+	    if (lhs.isConstant() && rhs.isConstant()) {
+	    	return new Constant(lhs.getValue() - rhs.getValue());
+	    } else {
+	        return new Subtraction(lhs, rhs);
+	    }
+	}
 }

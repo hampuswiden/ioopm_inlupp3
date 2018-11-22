@@ -1,23 +1,35 @@
 package org.ioopm.calculator.ast;
 
 public class Negation extends Unary {
-  private SymbolicExpression expression;
+  private SymbolicExpression arg;
   
-	public Negation(SymbolicExpression expression) {
-		super("Negation", expression);
-		this.expression = expression;
+	public Negation(SymbolicExpression arg) {
+		super("Negation", arg);
+		this.arg = arg;
+	}
+	
+	public String getName() {
+ 		return "negation";
+	}
+	
+	public String toString() {
+		return super.toString();
 	}
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Negation) {
-	        return this.equals((Negation) other);
+	        return super.equals(other);
 	    } else {
 	        return false;
 	    }
 	}
-
-	public boolean equals(Negation other) {
-	    /// access a private field of other!
-	    return this.expression.equals(other.expression);
+	
+	public SymbolicExpression eval(Environment vars) {
+	    SymbolicExpression arg = this.arg.eval(vars);
+	    if (arg.isConstant()) {
+	        return new Constant(-arg.getValue());
+	    } else {
+	        return new Negation(arg);
+	    }
 	}
 }

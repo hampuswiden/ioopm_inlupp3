@@ -1,16 +1,18 @@
 package org.ioopm.calculator.ast;
 
 public abstract class Atom extends SymbolicExpression{
+	/*private double value;
 	private String var;
-	private double value;
+	//private double value;
 	
-	public Atom(String arg) {
-		super("Variable", arg);
-		this.var = arg;
+	public Atom(double value) {
+		super("Constant", value);
+		this.value = value;
 	}
 	
-	public Atom(double arg) {
-		super("Constant", arg);
-		this.value = arg;
-	}
+	
+	public Atom(String value) {
+		super("Variable", value);
+		this.var = value;
+	}*/
 }
