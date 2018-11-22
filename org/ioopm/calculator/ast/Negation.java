@@ -4,7 +4,7 @@ public class Negation extends Unary {
   private SymbolicExpression arg;
   
 	public Negation(SymbolicExpression arg) {
-		super("Negation", arg);
+		super(arg);
 		this.arg = arg;
 	}
 	

@@ -5,7 +5,7 @@ public class Addition extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Addition(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super("Addition", lhs, rhs);
+		super(lhs, rhs);
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}

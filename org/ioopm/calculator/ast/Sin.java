@@ -4,7 +4,7 @@ public class Sin extends Unary{
 	private SymbolicExpression arg;	
 	
 	public Sin(SymbolicExpression arg) {
-		super("Sin" ,arg);
+		super(arg);
 		this.arg = arg;
 	}
 

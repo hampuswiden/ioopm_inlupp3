@@ -4,7 +4,7 @@ public class Log extends Unary{
 	private SymbolicExpression arg;
 	
 	public Log(SymbolicExpression arg) {
-		super("Log" ,arg);
+		super(arg);
 		this.arg = arg;
 	}
 

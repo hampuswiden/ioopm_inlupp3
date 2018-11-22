@@ -3,8 +3,7 @@ package org.ioopm.calculator.ast;
 public abstract class Unary extends SymbolicExpression{
 	private SymbolicExpression arg;
 	
-	public Unary(String function, SymbolicExpression arg) {
-		super(function, arg);
+	public Unary(SymbolicExpression arg) {
 		this.arg = arg;
 	}
 	

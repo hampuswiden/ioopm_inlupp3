@@ -1,12 +1,12 @@
 package org.ioopm.calculator.ast;
 
 public class Vars extends Command{
-	private String arg;	
-	
-	public Vars(String arg) {
-		super(arg);
-		this.arg = arg;
-	}
+	private static final Vars theInstance = new Vars();
+
+    private Vars() {}
+    public static Vars instance() {
+        return theInstance;
+    }
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Vars) {
@@ -18,7 +18,7 @@ public class Vars extends Command{
 
 	public boolean equals(Vars other) {
 	    /// access a private field of other!
-	    return this.arg.equals(other.arg);
+	    return this.instance().equals(other.instance());
 	}
 
 	public String getName() {

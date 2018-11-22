@@ -5,7 +5,7 @@ public class Subtraction extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Subtraction(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super("Subtraction", lhs, rhs);
+		super(lhs, rhs);
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}

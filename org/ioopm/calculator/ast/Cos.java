@@ -4,7 +4,7 @@ public class Cos extends Unary{
 	private SymbolicExpression arg;	
 	
 	public Cos(SymbolicExpression arg) {
-		super("Cos" ,arg);
+		super(arg);
 		this.arg = arg;
 	}
 

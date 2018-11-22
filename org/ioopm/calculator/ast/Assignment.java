@@ -6,7 +6,6 @@ public class Assignment extends SymbolicExpression{
 	
 	public Assignment(SymbolicExpression expression, SymbolicExpression identifier) {
 		// Expression = Identifier
-		super("Assignment", expression, identifier);
 		this.lhs = expression;
 		this.rhs = identifier;
 	}

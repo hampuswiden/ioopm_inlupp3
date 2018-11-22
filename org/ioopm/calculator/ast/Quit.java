@@ -1,12 +1,12 @@
 package org.ioopm.calculator.ast;
 
 public class Quit extends Command{
-	private String arg;	
-	
-	public Quit(String arg) {
-		super(arg);
-		this.arg = arg;
-	}
+	private static final Quit theInstance = new Quit();
+
+    private Quit() {}
+    public static Quit instance() {
+        return theInstance;
+    }
 	
 	public boolean equals(Object other) {
 	    if (other instanceof Quit) {
@@ -18,7 +18,7 @@ public class Quit extends Command{
 
 	public boolean equals(Quit other) {
 	    /// access a private field of other!
-	    return this.arg.equals(other.arg);
+	    return this.instance().equals(other.instance());
 	}
 
 	public String getName() {

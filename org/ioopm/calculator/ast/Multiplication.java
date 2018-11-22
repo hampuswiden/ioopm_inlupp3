@@ -5,7 +5,7 @@ public class Multiplication extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super("Multiplication", lhs, rhs);
+		super(lhs, rhs);
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}

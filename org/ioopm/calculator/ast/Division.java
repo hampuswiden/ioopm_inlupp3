@@ -5,7 +5,7 @@ public class Division extends Binary {
 	private SymbolicExpression rhs;
 	
 	public Division(SymbolicExpression lhs, SymbolicExpression rhs) {
-		super("Division",lhs, rhs);
+		super(lhs, rhs);
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}
