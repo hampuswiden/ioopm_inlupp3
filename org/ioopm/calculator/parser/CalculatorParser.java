@@ -15,12 +15,9 @@ public class CalculatorParser {
 	
 	public void parse(String inputString) {
 		this.st = new StreamTokenizer(new StringReader(inputString));
-<<<<<<< HEAD
-=======
 		this.st.ordinaryChar('-'); /// parse object-oriented as "object" - "oriented" :) 
 		this.st.ordinaryChar('/');
         this.st.eolIsSignificant(true);
->>>>>>> eb0dbc0108dc31aa082a277c309bbf7d616a00b8
 	}
 
 	public SymbolicExpression statement() throws IOException {
