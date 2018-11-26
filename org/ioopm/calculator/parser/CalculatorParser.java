@@ -11,37 +11,32 @@ public class CalculatorParser {
 	
 	public CalculatorParser() {
 		this.st = new StreamTokenizer(new StringReader(""));
-		this.st.ordinaryChar('-'); /// parse object-oriented as "object" - "oriented" :) 
-        this.st.eolIsSignificant(true);
 	}
 	
 	public void parse(String inputString) {
-		this.st = new StreamTokenizer(new StringReader("45 + 10"));
+		this.st = new StreamTokenizer(new StringReader(inputString));
+		this.st.ordinaryChar('-'); /// parse object-oriented as "object" - "oriented" :) 
+		this.st.ordinaryChar('/');
+        this.st.eolIsSignificant(true);
 	}
 
 	public SymbolicExpression statement() throws IOException {
-		this.st.nextToken();
-
-		if (this.st.TT_EOL == 1) {
-			// Fixme
-			return new Constant(1);
-		}
-
+		this.st.nextToken(); 										// +1
 		if (this.st.ttype == this.st.TT_WORD) {
 			if (this.st.sval.equals("vars")) {
 				// Fixme 
 				// return new Vars.instance();
-				return new Constant(1);
+				Vars cmd = Vars.instance();
 			}
 			else if (this.st.sval.equals("quit")) {
 				// Fixme 
 				// return new Quit.instance();
-				return new Constant(1);
+				Quit cmd = Quit.instance();
 			}
-		} else {
-			return assignment();
 		}
-		return new Constant(1337);
+		this.st.pushBack();
+		return assignment();
+			
 	}
 
 	public SymbolicExpression assignment() throws IOException {
@@ -52,10 +47,12 @@ public class CalculatorParser {
 
 		//RHS
 		this.st.nextToken();
+		
 		while (this.st.ttype == '=') {
 			this.st.nextToken();
 			SymbolicExpression identifier = new Variable(this.st.sval);
 			result = new Assignment(result, identifier);
+			this.st.nextToken();
 		}
 		this.st.pushBack();
 
@@ -69,12 +66,13 @@ public class CalculatorParser {
         this.st.nextToken();
         /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '+' || this.st.ttype == '-') {
-        	SymbolicExpression rhs = term();
             if(this.st.ttype == '+'){
                 /// If we are adding things, read a term and add it to the current sum
+            	SymbolicExpression rhs = term();
                 lhs = new Addition(lhs,rhs);
             } else {
                 /// If we are adding things, read a term and subtract it from the current sum
+            	SymbolicExpression rhs = term();
                 lhs = new Subtraction(lhs,rhs);
             }
             /// Read the next token into sval/nval/ttype so we can go back in the loop again
@@ -94,15 +92,14 @@ public class CalculatorParser {
         this.st.nextToken();
         /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '*' || this.st.ttype == '/') {
-        	SymbolicExpression rhs = primary();
             if(this.st.ttype == '*'){
-                /// If we are adding things, read a term and add it to the current sum
+            	SymbolicExpression rhs = primary();
                 lhs = new Multiplication(lhs,rhs);
             } else {
-                /// If we are adding things, read a term and subtract it from the current sum
+            	SymbolicExpression rhs = primary();
                 lhs = new Division(lhs,rhs);
             }
-            /// Read the next token into sval/nval/ttype so we can go back in the loop again
+
             this.st.nextToken();
         }
         /// If we came here, we read something which was not a + or -, so we need to put
@@ -139,23 +136,24 @@ public class CalculatorParser {
 
     public SymbolicExpression unary() throws IOException {
     	SymbolicExpression result = new Constant(1337);
-    	this.st.nextToken();
+    	String tmpFunction = null;
+    	if (this.st.ttype == this.st.TT_WORD) {
+    		tmpFunction = this.st.sval;
+    	}	
 		SymbolicExpression primary = primary();
-		this.st.pushBack();
-		if (this.st.ttype == this.st.TT_WORD) {
-			if (this.st.sval.equals("exp")) {
+		if (tmpFunction != null) {
+			if (tmpFunction.equals("exp")) {
 				result = new Exp(primary);
-			} else if (this.st.sval.equals("log")) {
+			} else if (tmpFunction.equals("log")) {
 				result = new Log(primary);
-			} else if (this.st.sval.equals("sin")) {
+			} else if (tmpFunction.equals("sin")) {
 				result = new Sin(primary);
-			} else if ((this.st.sval.equals("cos"))) {
+			} else if ((tmpFunction.equals("cos"))) {
 				result = new Cos(primary);
 			}
 		} else { // Negation
 			result = new Negation(primary);
 		}
-		this.st.nextToken();
 		return result;
     }
 
