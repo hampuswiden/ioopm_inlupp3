@@ -1,7 +1,10 @@
-all:
+compile_ast:
 	javac -d classes org/ioopm/calculator/ast/*.java
-run:
-	java -cp classes org/ioopm/calculator/Calculator
+compile_parser:
+	javac -d classes -classpath classes org/ioopm/calculator/parser/*.java
+run: compile_ast compile_parser
+	# java -cp classes org/ioopm/calculator/Calculator
+	java -classpath classes org.ioopm.calculator.parser.CalculatorParser
 clean:
 	rm -rf classes
 test:
