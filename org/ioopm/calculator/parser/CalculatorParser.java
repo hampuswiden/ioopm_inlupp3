@@ -24,8 +24,6 @@ public class CalculatorParser {
 		this.st.nextToken(); 										// +1
 		if (this.st.ttype == this.st.TT_WORD) {
 			if (this.st.sval.equals("vars")) {
-				// Fixme 
-				// return new Vars.instance();
 				Vars cmd = Vars.instance();
 			}
 			else if (this.st.sval.equals("quit")) {
