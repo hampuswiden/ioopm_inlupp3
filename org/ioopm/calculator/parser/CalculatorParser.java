@@ -16,7 +16,7 @@ public class CalculatorParser {
 	}
 	
 	public void parse(String inputString) {
-		this.st = new StreamTokenizer(new StringReader("45 + 10"));
+		this.st = new StreamTokenizer(new StringReader(inputString));
 	}
 
 	public SymbolicExpression statement() throws IOException {
