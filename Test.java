@@ -2,11 +2,49 @@ import org.ioopm.calculator.ast.*;
 import java.util.HashMap;
 
 public class Test {
-	
+	Environment vars = new Environment();
+
+	public void ast_constant() {
+		Constant c1 = new Constant(1);
+		Constant c2 = new Constant(2);
+		boolean result1 = c1.equals(c1);
+		boolean result2 = c1.equals(c2);
+		assert result1;
+		assert result2;
+
+	}
+
+
+
 	public static void main(String[] args) {
 		Environment vars = new Environment();
 
 		
+
+
+
+
+		////////////////////
+		////// Parser //////
+		////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+		///////////////////
+		/////// AST ///////
+		///////////////////
+
+
 		//Created Expressions
 		Constant c1 = new Constant(5.0);
 		Constant c2 = new Constant(2.0);
