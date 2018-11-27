@@ -25,11 +25,13 @@ public class CalculatorParser {
 		if (this.st.ttype == this.st.TT_WORD) {
 			if (this.st.sval.equals("vars")) {
 				Vars cmd = Vars.instance();
+				return cmd;
 			}
 			else if (this.st.sval.equals("quit")) {
 				// Fixme 
 				// return new Quit.instance();
 				Quit cmd = Quit.instance();
+				return cmd;
 			}
 		}
 		this.st.pushBack();

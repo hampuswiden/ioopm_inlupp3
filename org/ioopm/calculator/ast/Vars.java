@@ -19,11 +19,11 @@ public class Vars extends Command{
 
 	public boolean equals(Vars other) {
 	    /// access a private field of other!
-	    return this.instance().equals(other.instance());
+	    return true;
 	}
 
 	public String getName() {
-		return "Vars";
+		return "vars";
 	}
 
 	public String toString() {

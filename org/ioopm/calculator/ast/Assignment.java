@@ -18,6 +18,19 @@ public class Assignment extends SymbolicExpression{
 		return "=";
 	}
 	
+	public boolean equals(Object other) {
+	    if (other instanceof Assignment) {
+	        return this.equals((Assignment) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Assignment other) {
+	    /// access a private field of other!
+		return (this.lhs.equals(other.lhs) && this.rhs.equals(other.rhs));
+	}
+	
 	public String toString() {
 		String returnString = "";
 		

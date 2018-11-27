@@ -18,11 +18,11 @@ public class Quit extends Command{
 
 	public boolean equals(Quit other) {
 	    /// access a private field of other!
-	    return this.instance().equals(other.instance());
+	    return true;
 	}
 
 	public String getName() {
-		return "Quit";
+		return "quit";
 	}
 
 	public String toString() {
