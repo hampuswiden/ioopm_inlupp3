@@ -64,12 +64,15 @@ public class CalculatorParser {
         this.st.nextToken();
         /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '+' || this.st.ttype == '-') {
+
             if(this.st.ttype == '+'){
                 /// If we are adding things, read a term and add it to the current sum
+                operatorCheck();
             	SymbolicExpression rhs = term();
                 lhs = new Addition(lhs,rhs);
             } else {
                 /// If we are adding things, read a term and subtract it from the current sum
+                operatorCheck();
             	SymbolicExpression rhs = term();
                 lhs = new Subtraction(lhs,rhs);
             }
@@ -90,10 +93,13 @@ public class CalculatorParser {
         this.st.nextToken();
         /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '*' || this.st.ttype == '/') {
+
             if(this.st.ttype == '*'){
+            	operatorCheck();
             	SymbolicExpression rhs = primary();
                 lhs = new Multiplication(lhs,rhs);
             } else {
+            	operatorCheck();
             	SymbolicExpression rhs = primary();
                 lhs = new Division(lhs,rhs);
             }
@@ -137,7 +143,8 @@ public class CalculatorParser {
     	String tmpFunction = null;
     	if (this.st.ttype == this.st.TT_WORD) {
     		tmpFunction = this.st.sval;
-    	}	
+    	}
+    	operatorCheck();
 		SymbolicExpression primary = primary();
 		if (tmpFunction != null) {
 			if (tmpFunction.equals("exp")) {
@@ -161,6 +168,14 @@ public class CalculatorParser {
 
     public SymbolicExpression number() throws IOException {
     	return new Constant(this.st.nval);
+    }
+
+    public void operatorCheck() throws IOException {
+    	this.st.nextToken();
+    	if (this.st.ttype == '+' || this.st.ttype == '*' || this.st.ttype == '/') {
+        	throw new SyntaxErrorException("error: consecutive operators");
+        }
+        this.st.pushBack();
     }
 
 
