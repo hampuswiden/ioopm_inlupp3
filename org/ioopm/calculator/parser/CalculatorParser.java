@@ -15,22 +15,22 @@ public class CalculatorParser {
 	
 	public void parse(String inputString) {
 		this.st = new StreamTokenizer(new StringReader(inputString));
-		this.st.ordinaryChar('-'); /// parse object-oriented as "object" - "oriented" :) 
+		this.st.ordinaryChar('-');
 		this.st.ordinaryChar('/');
         this.st.eolIsSignificant(true);
 	}
 
 	public SymbolicExpression statement() throws IOException {
-		this.st.nextToken(); 										// +1
+		this.st.nextToken(); 
 		if (this.st.ttype == this.st.TT_WORD) {
 			if (this.st.sval.equals("vars")) {
 				Vars cmd = Vars.instance();
 				return cmd;
-			}
-			else if (this.st.sval.equals("quit")) {
-				// Fixme 
-				// return new Quit.instance();
+			} else if (this.st.sval.equals("quit")) {
 				Quit cmd = Quit.instance();
+				return cmd;
+			} else if (this.st.sval.equals("clear")) {
+				Clear cmd = Clear.instance();
 				return cmd;
 			}
 		}
@@ -40,7 +40,6 @@ public class CalculatorParser {
 	}
 
 	public SymbolicExpression assignment() throws IOException {
-		// Calculate AST for LHS and assign to RHS if RHS exists!
 		
 		//LHS
 		SymbolicExpression result = expression();
@@ -60,40 +59,28 @@ public class CalculatorParser {
 	}
 
 	public SymbolicExpression expression() throws IOException {
-		/// Read a term and make it the current sum 
         SymbolicExpression lhs = term();
-        /// Read the next token and put it in sval/nval/ttype depending on the token
         this.st.nextToken();
-        /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '+' || this.st.ttype == '-') {
 
             if(this.st.ttype == '+'){
-                /// If we are adding things, read a term and add it to the current sum
                 operatorCheck();
             	SymbolicExpression rhs = term();
                 lhs = new Addition(lhs,rhs);
             } else {
-                /// If we are adding things, read a term and subtract it from the current sum
                 operatorCheck();
             	SymbolicExpression rhs = term();
                 lhs = new Subtraction(lhs,rhs);
             }
-            /// Read the next token into sval/nval/ttype so we can go back in the loop again
             this.st.nextToken();
         }
-        /// If we came here, we read something which was not a + or -, so we need to put
-        /// that back again (whatever it was) so that we did not accidentally ate it up!
         this.st.pushBack();
-        /// We are done, return sum
         return lhs;
     }
 
     public SymbolicExpression term() throws IOException {
-		/// Read a term and make it the current sum 
         SymbolicExpression lhs = primary();
-        /// Read the next token and put it in sval/nval/ttype depending on the token
         this.st.nextToken();
-        /// If the token read was + or -, go into the loop 
         while (this.st.ttype == '*' || this.st.ttype == '/') {
 
             if(this.st.ttype == '*'){
@@ -108,10 +95,7 @@ public class CalculatorParser {
 
             this.st.nextToken();
         }
-        /// If we came here, we read something which was not a + or -, so we need to put
-        /// that back again (whatever it was) so that we did not accidentally ate it up!
         this.st.pushBack();
-        /// We are done, return sum
         return lhs;
     }
 
@@ -165,6 +149,9 @@ public class CalculatorParser {
     }
 
     public SymbolicExpression identifier() throws IOException {
+    	if (this.st.sval.equals("pi") || this.st.sval.equals("Answer") || this.st.sval.equals("L") || this.st.sval.equals("e")) {
+    		throw new IllegalExpressionException("Cannot redefine named constant " + this.st.sval);
+    	}
     	return new Variable(this.st.sval);
     }
 
@@ -207,6 +194,15 @@ public class CalculatorParser {
 	        super();
 	    }
 	    public SyntaxErrorException(String msg) {
+	        super(msg);
+	    }
+	}
+	
+	public class IllegalExpressionException extends RuntimeException {
+	    public IllegalExpressionException() {
+	        super();
+	    }
+	    public IllegalExpressionException(String msg) {
 	        super(msg);
 	    }
 	}

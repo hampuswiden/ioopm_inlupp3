@@ -15,28 +15,28 @@ public class Test {
 	};
 	
 	
-	public void ast_test() {
-		this.ast_constant();
-		this.ast_variable();
-		this.ast_addition();
-		this.ast_subtraction();
-		this.ast_multiplication();
-		this.ast_division();
-		this.ast_assignment();
-		this.ast_cos();
-		this.ast_sin();
-		this.ast_exp();
-		this.ast_log();
-		this.ast_negation();
+	public void astTest() {
+		this.astConstant();
+		this.astVariable();
+		this.astAddition();
+		this.astSubtraction();
+		this.astMultiplication();
+		this.astDivision();
+		this.astAssignment();
+		this.astCos();
+		this.astSin();
+		this.astExp();
+		this.astLog();
+		this.astNegation();
 	}
 	
-	public void parse_test() {
-		this.ast_test();
-		this.parse_binary();
-		this.parse_unary();
-		this.parse_command();
-		this.parse_atom();
-		this.parse_general();
+	public void parseTest() {
+		this.astTest();
+		this.parseBinary();
+		this.parseUnary();
+		this.parseCommand();
+		this.parseAtom();
+		this.parseGeneral();
 	}
 
 	
@@ -45,7 +45,7 @@ public class Test {
 	//// AST TESTS ////
    ///////////////////
 
-	public void ast_constant() {
+	public void astConstant() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		boolean result1 = c1.equals(c1);
@@ -54,7 +54,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_variable() {
+	public void astVariable() {
 		Variable v1 = new Variable("X");
 		Variable v2 = new Variable("Y");
 		boolean result1 = v1.equals(v1);
@@ -63,7 +63,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_addition() {
+	public void astAddition() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -78,7 +78,7 @@ public class Test {
 		assert !result3;
 	}
 	
-	public void ast_subtraction() {
+	public void astSubtraction() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -93,7 +93,7 @@ public class Test {
 		assert !result3;
 	}
 	
-	public void ast_multiplication() {
+	public void astMultiplication() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -108,7 +108,7 @@ public class Test {
 		assert !result3;
 	}
 	
-	public void ast_division() {
+	public void astDivision() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -123,7 +123,7 @@ public class Test {
 		assert !result3;
 	}
 	
-	public void ast_assignment() {
+	public void astAssignment() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -140,7 +140,7 @@ public class Test {
 		assert !result3;
 	}
 	
-	public void ast_cos() {
+	public void astCos() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Cos cos1 = new Cos(c1);
@@ -151,7 +151,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_sin() {
+	public void astSin() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Sin sin1 = new Sin(c1);
@@ -162,7 +162,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_exp() {
+	public void astExp() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Exp exp1 = new Exp(c1);
@@ -173,7 +173,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_log() {
+	public void astLog() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Log log1 = new Log(c1);
@@ -184,7 +184,7 @@ public class Test {
 		assert !result2;
 	}
 	
-	public void ast_negation() {
+	public void astNegation() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Negation n1 = new Negation(c1);
@@ -202,20 +202,18 @@ public class Test {
    //////////////////////
 	
 	
-public void parse_atom() {
+public void parseAtom() {
 		Constant c1 = new Constant(1);
 		Variable v1 = new Variable("x");
-		//Clear c1 = Clear.instance();
+		NamedConstant n1 = new NamedConstant("pi");
 		
 		CalculatorParser p = new CalculatorParser();
 		
 		String s1 = "1";
 		String s2 = "x";
-		//String s3 = "clear";
 		
 		SymbolicExpression r1 = new Variable("Error");
 		SymbolicExpression r2 = new Variable("Error");
-		//SymbolicExpression r3 = new Variable("Error");
 		
 		try {
 			p.parse(s1);
@@ -224,9 +222,6 @@ public void parse_atom() {
 			p.parse(s2);
 			r2 = p.statement();
 			
-			//p.parse(s3);
-			//r3 = p.statement();
-			
 		 } catch(CalculatorParser.SyntaxErrorException e) {
 	            System.out.print("Syntax Error: ");
 	            System.out.println(e.getMessage());
@@ -234,17 +229,17 @@ public void parse_atom() {
 	            System.err.println("IO Exception!");
 	     }
 		
-		boolean constant_result = r1.equals(c1);
-		boolean variable_result = r2.equals(v1);
-		//boolean clear_result = r3.equals(c1);
+		boolean constantResult = r1.equals(c1);
+		boolean variableResult = r2.equals(v1);
+		boolean namedConstantResult = n1.getName().equals("named constant");
 		
-		assert constant_result;
-		assert variable_result;
-		//assert clear_result;
+		assert constantResult;
+		assert variableResult;
+		assert namedConstantResult;
 	}
 	
 	
-	public void parse_binary() {
+	public void parseBinary() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -292,20 +287,20 @@ public void parse_atom() {
 	            System.err.println("IO Exception!");
 	     }
 		
-		boolean add_result = r1.equals(add1);
-		boolean sub_result = r2.equals(sub1);
-		boolean mult_result = r3.equals(mult1);
-		boolean div_result = r4.equals(div1);
-		boolean ass_result = r5.equals(ass1);
+		boolean addResult = r1.equals(add1);
+		boolean subResult = r2.equals(sub1);
+		boolean multResult = r3.equals(mult1);
+		boolean divResult = r4.equals(div1);
+		boolean assResult = r5.equals(ass1);
 		
-		assert add_result;
-		assert sub_result;
-		assert mult_result;
-		assert div_result;
-		assert ass_result;
+		assert addResult;
+		assert subResult;
+		assert multResult;
+		assert divResult;
+		assert assResult;
 	}
 	
-	public void parse_unary() {
+	public void parseUnary() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Cos cos1 = new Cos(c1);
@@ -351,20 +346,20 @@ public void parse_atom() {
 	            System.err.println("IO Exception!");
 	     }
 		
-		boolean cos_result = r1.equals(cos1);
-		boolean sin_result = r2.equals(sin1);
-		boolean exp_result = r3.equals(exp1);
-		boolean log_result = r4.equals(log1);
-		boolean negation_result = r5.equals(n1);
+		boolean cosResult = r1.equals(cos1);
+		boolean sinResult = r2.equals(sin1);
+		boolean expResult = r3.equals(exp1);
+		boolean logResult = r4.equals(log1);
+		boolean negationResult = r5.equals(n1);
 		
-		assert cos_result;
-		assert sin_result;
-		assert exp_result;
-		assert log_result;
-		assert negation_result;
+		assert cosResult;
+		assert sinResult;
+		assert expResult;
+		assert logResult;
+		assert negationResult;
 	}
 	
-	public void parse_general() {
+	public void parseGeneral() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
 		Constant c3 = new Constant(3);
@@ -455,21 +450,21 @@ public void parse_atom() {
 		assert result5;
 	}
 	
-	public void parse_command() {
+	public void parseCommand() {
 		
 		Vars v1 = Vars.instance();
 		Quit q1 = Quit.instance();
-		//Clear c1 = Clear.instance();
+		Clear c1 = Clear.instance();
 		
 		CalculatorParser p = new CalculatorParser();
 		
 		String s1 = "vars";
 		String s2 = "quit";
-		//String s3 = "clear";
+		String s3 = "clear";
 		
 		SymbolicExpression r1 = new Variable("Error");
 		SymbolicExpression r2 = new Variable("Error");
-		//SymbolicExpression r3 = new Variable("Error");
+		SymbolicExpression r3 = new Variable("Error");
 		
 		try {
 			p.parse(s1);
@@ -478,8 +473,8 @@ public void parse_atom() {
 			p.parse(s2);
 			r2 = p.statement();
 			
-			//p.parse(s3);
-			//r3 = p.statement();
+			p.parse(s3);
+			r3 = p.statement();
 			
 		 } catch(CalculatorParser.SyntaxErrorException e) {
 	            System.out.print("Syntax Error: ");
@@ -488,19 +483,19 @@ public void parse_atom() {
 	            System.err.println("IO Exception!");
 	     }
 		
-		boolean vars_result = r1.equals(v1);
-		boolean quit_result = r2.equals(q1);
-		//boolean clear_result = r3.equals(c1);
+		boolean varsResult = r1.equals(v1);
+		boolean quitResult = r2.equals(q1);
+		boolean clearResult = r3.equals(c1);
 		
-		assert vars_result;
-		assert quit_result;
-		//assert clear_result;
+		assert varsResult;
+		assert quitResult;
+		assert clearResult;
 	}
 
 	public static void main(String[] args) {
 		Test test = new Test();
-		test.ast_test();
-		test.parse_test();
+		test.astTest();
+		test.parseTest();
 		
 
 		
