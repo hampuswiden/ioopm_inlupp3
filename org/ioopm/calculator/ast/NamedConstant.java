@@ -1,7 +1,16 @@
 package org.ioopm.calculator.ast;
+import java.util.HashMap;
 
 public class NamedConstant extends Atom {
 	private String value;
+	public static final HashMap<String, Double> namedConstants = new HashMap<>();
+	
+	static {
+		NamedConstant.namedConstants.put("pi", Math.PI);
+		NamedConstant.namedConstants.put("e", Math.E);
+		NamedConstant.namedConstants.put("Answer", (double)42);
+		NamedConstant.namedConstants.put("L", 6.022140857*Math.pow(10, 23));
+	}
 	
 	public NamedConstant(String value) {
 		this.value = value;
@@ -34,12 +43,7 @@ public class NamedConstant extends Atom {
 	}
 	
 	public SymbolicExpression eval(Environment vars) {
-		SymbolicExpression value =  vars.get(this);
-		if (value instanceof SymbolicExpression)
-		{
-			return value;
-		}
-		return new NamedConstant(this.value);
+		return new Constant(NamedConstant.namedConstants.get(this.value));
 	}
 
 	@Override

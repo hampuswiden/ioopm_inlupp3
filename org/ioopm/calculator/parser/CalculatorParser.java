@@ -49,6 +49,9 @@ public class CalculatorParser {
 		
 		while (this.st.ttype == '=') {
 			this.st.nextToken();
+			if (this.st.sval.equals("pi") || this.st.sval.equals("Answer") || this.st.sval.equals("L") || this.st.sval.equals("e")) {
+	    		throw new IllegalExpressionException("Cannot redefine named constant " + this.st.sval);
+	    	}
 			SymbolicExpression identifier = new Variable(this.st.sval);
 			result = new Assignment(result, identifier);
 			this.st.nextToken();
@@ -113,6 +116,8 @@ public class CalculatorParser {
     	} else if (this.st.ttype == this.st.TT_WORD) {
     		if (this.st.sval.equals("exp") || this.st.sval.equals("log") || this.st.sval.equals("sin") || this.st.sval.equals("cos")) {
     			result = unary();
+    		} else if (this.st.sval.equals("pi") || this.st.sval.equals("Answer") || this.st.sval.equals("L") || this.st.sval.equals("e")){
+    			result = namedConstant();
     		} else { //Variable
     			result = identifier();
     		}
@@ -147,11 +152,12 @@ public class CalculatorParser {
 		}
 		return result;
     }
+    
+    public SymbolicExpression namedConstant() throws IOException {
+    	return new NamedConstant(this.st.sval);
+    }
 
     public SymbolicExpression identifier() throws IOException {
-    	if (this.st.sval.equals("pi") || this.st.sval.equals("Answer") || this.st.sval.equals("L") || this.st.sval.equals("e")) {
-    		throw new IllegalExpressionException("Cannot redefine named constant " + this.st.sval);
-    	}
     	return new Variable(this.st.sval);
     }
 
