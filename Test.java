@@ -30,6 +30,16 @@ public class Test {
 		this.ast_negation();
 	}
 	
+	public void parse_test() {
+		this.ast_test();
+		this.parse_binary();
+		this.parse_unary();
+		this.parse_command();
+		this.parse_atom();
+		this.parse_general();
+	}
+
+	
 	
 	 ///////////////////
 	//// AST TESTS ////
@@ -486,19 +496,11 @@ public void parse_atom() {
 		assert quit_result;
 		//assert clear_result;
 	}
-	
-
-	
-
 
 	public static void main(String[] args) {
 		Test test = new Test();
 		test.ast_test();
-		test.parse_binary();
-		test.parse_unary();
-		test.parse_command();
-		test.parse_atom();
-		test.parse_general();
+		test.parse_test();
 		
 
 		
