@@ -4,14 +4,28 @@ import org.ioopm.calculator.parser.*;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * @author      Jonathan Franzén, Hampus Widén
+ * @version     1.0
+ * @since       1.0
+ */
 public class Test {
+	/**
+	 * Environment that hold all variables and it's values.
+	 */
 	Environment vars;
 	
+	/**
+	 * Constructor for Test.
+	 * @since  1.0
+	 */
 	public Test() {
 		this.vars = new Environment();
 	};
 	
-	
+	/**
+	 * Tests the classes and methods of the abstract syntax tree package, ast.
+	 */
 	public void astTest() {
 		this.astConstant();
 		this.astVariable();
@@ -27,6 +41,9 @@ public class Test {
 		this.astNegation();
 	}
 	
+	/**
+	 * Tests the classes and methods of the parser package.
+	 */
 	public void parseTest() {
 		this.astTest();
 		this.parseBinary();
@@ -42,6 +59,9 @@ public class Test {
 	//// AST TESTS ////
    ///////////////////
 
+	/**
+	 * Tests the Constant Class in the ast package.
+	 */
 	public void astConstant() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -51,6 +71,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Variable Class in the ast package.
+	 */
 	public void astVariable() {
 		Variable v1 = new Variable("X");
 		Variable v2 = new Variable("Y");
@@ -60,6 +83,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Addition Class in the ast package.
+	 */
 	public void astAddition() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -75,6 +101,9 @@ public class Test {
 		assert !result3;
 	}
 	
+	/**
+	 * Tests the Subtraction Class in the ast package.
+	 */
 	public void astSubtraction() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -90,6 +119,9 @@ public class Test {
 		assert !result3;
 	}
 	
+	/**
+	 * Tests the Multiplication Class in the ast package.
+	 */
 	public void astMultiplication() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -105,6 +137,9 @@ public class Test {
 		assert !result3;
 	}
 	
+	/**
+	 * Tests the Division Class in the ast package.
+	 */
 	public void astDivision() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -120,6 +155,9 @@ public class Test {
 		assert !result3;
 	}
 	
+	/**
+	 * Tests the Assignment Class in the ast package.
+	 */
 	public void astAssignment() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -137,6 +175,9 @@ public class Test {
 		assert !result3;
 	}
 	
+	/**
+	 * Tests the Cos Class in the ast package.
+	 */
 	public void astCos() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -148,6 +189,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Sin Class in the ast package.
+	 */
 	public void astSin() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -159,6 +203,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Exp Class in the ast package.
+	 */
 	public void astExp() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -170,6 +217,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Log Class in the ast package.
+	 */
 	public void astLog() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -181,6 +231,9 @@ public class Test {
 		assert !result2;
 	}
 	
+	/**
+	 * Tests the Negation Class in the ast package.
+	 */
 	public void astNegation() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -198,8 +251,10 @@ public class Test {
 	//// PARSER TESTS ////
    //////////////////////
 	
-	
-public void parseAtom() {
+	/**
+	 * Tests the Atom class and its sublcasses in the ast package, used by the parser.
+	 */
+	public void parseAtom() {
 		Constant c1 = new Constant(1);
 		Variable v1 = new Variable("x");
 		NamedConstant n1 = new NamedConstant("pi");
@@ -235,7 +290,9 @@ public void parseAtom() {
 		assert namedConstantResult;
 	}
 	
-	
+	/**
+	 * Tests the Binary class, its sublcasses and the Assignment class in the ast package, used by the parser.
+	 */
 	public void parseBinary() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -297,6 +354,9 @@ public void parseAtom() {
 		assert assResult;
 	}
 	
+	/**
+	 * Tests the Unary class and its sublcasses in the ast package, used by the parser.
+	 */
 	public void parseUnary() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -356,6 +416,9 @@ public void parseAtom() {
 		assert negationResult;
 	}
 	
+	/**
+	 * A set of general tests for the parser.
+	 */
 	public void parseGeneral() {
 		Constant c1 = new Constant(1);
 		Constant c2 = new Constant(2);
@@ -446,7 +509,9 @@ public void parseAtom() {
 		assert result4;
 		assert result5;
 	}
-	
+	/**
+	 * Tests the Command class and its sublcasses in the ast package, used by the parser.
+	 */
 	public void parseCommand() {
 		
 		Vars v1 = Vars.instance();
@@ -489,6 +554,9 @@ public void parseAtom() {
 		assert clearResult;
 	}
 
+	/**
+	 * The main method. Runs the ast test and parser test.
+	 */
 	public static void main(String[] args) {
 		Test test = new Test();
 		test.astTest();

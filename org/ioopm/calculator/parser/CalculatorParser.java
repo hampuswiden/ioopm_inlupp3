@@ -6,13 +6,30 @@ import java.io.IOException;
 import java.util.Scanner;
 import org.ioopm.calculator.ast.*;
 
+/**
+ * @author      Jonathan Franzén, Hampus Widén
+ * @version     1.0
+ * @since       1.0
+ */
 public class CalculatorParser {
+	/**
+	 * StreamTokenizer for the parser
+	 */
 	private StreamTokenizer st;
 	
+	/**
+	 * Constructor for CalculatorParser.
+	 * @since  1.0
+	 */
 	public CalculatorParser() {
 		this.st = new StreamTokenizer(new StringReader(""));
 	}
 	
+	/**
+	 * Parses the input String.
+	 * @param  String to be parsed.
+	 * @since  1.0
+	 */
 	public void parse(String inputString) {
 		this.st = new StreamTokenizer(new StringReader(inputString));
 		this.st.ordinaryChar('-');
@@ -20,6 +37,12 @@ public class CalculatorParser {
         this.st.eolIsSignificant(true);
 	}
 
+	/**
+	 * Processes an expression from the StreamTokenizer and passes it to assignment().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
 	public SymbolicExpression statement() throws IOException {
 		this.st.nextToken(); 
 		if (this.st.ttype == this.st.TT_WORD) {
@@ -35,10 +58,15 @@ public class CalculatorParser {
 			}
 		}
 		this.st.pushBack();
-		return assignment();
-			
+		return assignment();	
 	}
 
+	/**
+	 * Processes an expression from the StreamTokenizer and passes it to expression().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
 	public SymbolicExpression assignment() throws IOException {
 		
 		//LHS
@@ -60,10 +88,15 @@ public class CalculatorParser {
 			this.st.nextToken();
 		}
 		this.st.pushBack();
-
 		return result;
 	}
 
+	/**
+	 * Processes an expression from the StreamTokenizer and passes it to term().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
 	public SymbolicExpression expression() throws IOException {
         SymbolicExpression lhs = term();
         this.st.nextToken();
@@ -84,6 +117,12 @@ public class CalculatorParser {
         return lhs;
     }
 
+	/**
+	 * Processes an expression from the StreamTokenizer and passes it to primary().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression term() throws IOException {
         SymbolicExpression lhs = primary();
         this.st.nextToken();
@@ -105,6 +144,12 @@ public class CalculatorParser {
         return lhs;
     }
 
+    /**
+	 * Processes an expression from the StreamTokenizer and passes it further to its respective method.
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression primary() throws IOException {
     	this.st.nextToken();
     	SymbolicExpression result;
@@ -132,8 +177,14 @@ public class CalculatorParser {
     	return result;
     }
 
+    /**
+	 * Processes an expression from the StreamTokenizer.
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression unary() throws IOException {
-    	SymbolicExpression result = new Constant(1337);
+    	SymbolicExpression result = new Variable("Error");
     	String tmpFunction = null;
     	if (this.st.ttype == this.st.TT_WORD) {
     		tmpFunction = this.st.sval;
@@ -156,18 +207,41 @@ public class CalculatorParser {
 		return result;
     }
     
+    /**
+	 * Processes an expression from the StreamTokenizer().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression namedConstant() throws IOException {
     	return new NamedConstant(this.st.sval);
     }
 
+    /**
+	 * Processes an expression from the StreamTokenizer().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression identifier() throws IOException {
     	return new Variable(this.st.sval);
     }
 
+    /**
+	 * Processes an expression from the StreamTokenizer().
+	 * @return SymbolicExpression of the evaluated expression.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public SymbolicExpression number() throws IOException {
     	return new Constant(this.st.nval);
     }
 
+    /**
+	 * Checks that there is no invalid operator following another operator.
+	 * @throws IOException if any errors occur.
+	 * @since  1.0
+	 */
     public void operatorCheck() throws IOException {
     	this.st.nextToken();
     	if (this.st.ttype == '+' || this.st.ttype == '*' || this.st.ttype == '/') {
@@ -177,6 +251,7 @@ public class CalculatorParser {
     }
 
 
+    
 	public static void main(String[] args) {
         CalculatorParser p = new CalculatorParser();
 
@@ -198,19 +273,43 @@ public class CalculatorParser {
     }
 
 
+	/**
+	 * @author      Jonathan Franzén, Hampus Widén
+	 * @version     1.0
+	 * @since       1.0
+	 */
 	public class SyntaxErrorException extends RuntimeException {
+		/**
+		 * The constructor for SyntaxErrorException
+		 */
 	    public SyntaxErrorException() {
 	        super();
 	    }
+	    /**
+		 * The constructor for SyntaxErrorException
+		 * @param The string to be printed with the exception
+		 */
 	    public SyntaxErrorException(String msg) {
 	        super(msg);
 	    }
 	}
 	
+	/**
+	 * @author      Jonathan Franzén, Hampus Widén
+	 * @version     1.0
+	 * @since       1.0
+	 */
 	public class IllegalExpressionException extends RuntimeException {
+		/**
+		 * The constructor for IllegalExpressionException
+		 */
 	    public IllegalExpressionException() {
 	        super();
 	    }
+	    /**
+		 * The constructor for IllegalExpressionException
+		 * @param The string to be printed with the exception
+		 */
 	    public IllegalExpressionException(String msg) {
 	        super(msg);
 	    }
