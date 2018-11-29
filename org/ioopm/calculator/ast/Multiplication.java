@@ -18,8 +18,8 @@ public class Multiplication extends Binary {
 	
 	/**
 	 * Constructor for Multiplication.
-	 * @param  SymbolicExpression for the expressions left hand side.
-	 * @param  SymbolicExpression for the expressions right hand side.
+	 * @param lhs SymbolicExpression for the expressions left hand side.
+	 * @param rhs SymbolicExpression for the expressions right hand side.
 	 * @since  1.0
 	 */
 	public Multiplication(SymbolicExpression lhs, SymbolicExpression rhs) {
@@ -48,7 +48,7 @@ public class Multiplication extends Binary {
 	
 	/**
 	 * Checks for equlity between the input expresison and Multiplication.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Multiplication, and has the same sub-expressions.
 	 * @since  1.0
 	 */
@@ -62,7 +62,7 @@ public class Multiplication extends Binary {
 
 	/**
 	 * Checks for equlity between the input expresison and Multiplication.
-	 * @param  Object to checks equality for.
+	 * @param other Object to checks equality for.
 	 * @return true if argument has the same sub-expressions on ethier left hand side or right hand side.
 	 * @since  1.0
 	 */
@@ -99,7 +99,7 @@ public class Multiplication extends Binary {
 	
 	/**
 	 * Evaluates the expression.
-	 * @param  Evironment where all variables are saved.
+	 * @param vars Evironment where all variables are saved.
 	 * @return SymbolicExpression that holds the evaluated expression.
 	 * @since  1.0
 	 */

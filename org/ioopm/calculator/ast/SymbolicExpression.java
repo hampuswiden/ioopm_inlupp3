@@ -83,6 +83,7 @@ public abstract class SymbolicExpression {
 
   /**
   * Gets the value of the class.
+  * @return double, the value of the expression
   * @throws RuntimeException since the SymbolicExpression class can't hold a value
   */
   public double getValue() {
@@ -130,6 +131,7 @@ public abstract class SymbolicExpression {
   /**
   * Check whether two instances are equal
   * @param vars the environment which holds the variables
+  * @return the evaluated SymbolicExpression
   */
   public abstract SymbolicExpression eval(Environment vars);
 

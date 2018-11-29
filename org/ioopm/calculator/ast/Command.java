@@ -14,7 +14,7 @@ public abstract class Command extends SymbolicExpression{
 	
 	/**
 	 * Checks for equlity between the input Object and Command.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Command.
 	 * @since  1.0
 	 */
@@ -28,7 +28,7 @@ public abstract class Command extends SymbolicExpression{
 
 	/**
 	 * Checks for equlity between the input command and Command.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if the two commands args are equal.
 	 * @since  1.0
 	 */

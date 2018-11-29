@@ -13,7 +13,7 @@ public class Log extends Unary{
 	
 	/**
 	 * Constructor for Log.
-	 * @param  SymbolicExpression that the expression holds.
+	 * @param arg SymbolicExpression that the expression holds.
 	 * @since  1.0
 	 */
 	public Log(SymbolicExpression arg) {
@@ -32,7 +32,7 @@ public class Log extends Unary{
 	
 	/**
 	 * Checks for equlity between the input expresison and Log.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Log, and holds the same subexpression.
 	 * @since  1.0
 	 */
@@ -55,7 +55,7 @@ public class Log extends Unary{
 	
 	/**
 	 * Evaluates the expression.
-	 * @param  Evironment where all variables are saved.
+	 * @param vars Evironment where all variables are saved.
 	 * @return SymbolicExpression that holds the evaluated expression.
 	 * @since  1.0
 	 */

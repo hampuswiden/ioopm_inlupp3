@@ -27,7 +27,7 @@ public class CalculatorParser {
 	
 	/**
 	 * Parses the input String.
-	 * @param  String to be parsed.
+	 * @param inputString String to be parsed.
 	 * @since  1.0
 	 */
 	public void parse(String inputString) {
@@ -287,7 +287,7 @@ public class CalculatorParser {
 	    }
 	    /**
 		 * The constructor for SyntaxErrorException
-		 * @param The string to be printed with the exception
+		 * @param msg The string to be printed with the exception
 		 */
 	    public SyntaxErrorException(String msg) {
 	        super(msg);
@@ -308,7 +308,7 @@ public class CalculatorParser {
 	    }
 	    /**
 		 * The constructor for IllegalExpressionException
-		 * @param The string to be printed with the exception
+		 * @param msg The string to be printed with the exception
 		 */
 	    public IllegalExpressionException(String msg) {
 	        super(msg);

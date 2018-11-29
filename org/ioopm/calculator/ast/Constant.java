@@ -13,7 +13,7 @@ public class Constant extends Atom {
 	
 	/**
 	 * Constructor for Constant.
-	 * @param  double for expression the Constant's value.
+	 * @param value double for expression the Constant's value.
 	 * @since  1.0
 	 */
 	public Constant(double value) {
@@ -58,7 +58,7 @@ public class Constant extends Atom {
 	
 	/**
 	 * Checks for equlity between the input expresison and Constant.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Constant, and has the same value.
 	 * @since  1.0
 	 */
@@ -72,7 +72,7 @@ public class Constant extends Atom {
 
 	/**
 	 * Checks for equlity between the input expresison and Constant.
-	 * @param  Object to checks equality for.
+	 * @param other Object to checks equality for.
 	 * @return true if argument has the same value.
 	 * @since  1.0
 	 */
@@ -82,7 +82,7 @@ public class Constant extends Atom {
 	
 	/**
 	 * Evaluates the expression.
-	 * @param  Evironment where all variables are saved.
+	 * @param vars Evironment where all variables are saved.
 	 * @return SymbolicExpression that holds the evaluated expression.
 	 * @since  1.0
 	 */

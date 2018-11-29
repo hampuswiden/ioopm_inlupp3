@@ -18,8 +18,8 @@ public class Assignment extends SymbolicExpression{
 	
 	/**
 	 * Constructor for Assignment.
-	 * @param  SymbolicExpression for the expressions left hand side.
-	 * @param  SymbolicExpression for the expressions right hand side.
+	 * @param expression SymbolicExpression for the expressions left hand side.
+	 * @param identifier SymbolicExpression for the expressions right hand side.
 	 * @since  1.0
 	 */
 	public Assignment(SymbolicExpression expression, SymbolicExpression identifier) {
@@ -47,7 +47,7 @@ public class Assignment extends SymbolicExpression{
 	
 	/**
 	 * Checks for equlity between the input expresison and Assignment.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Assignment, and has the same sub-expressions on the same side.
 	 * @since  1.0
 	 */
@@ -61,7 +61,7 @@ public class Assignment extends SymbolicExpression{
 
 	/**
 	 * Checks for equlity between the input expresison and Assignment.
-	 * @param  Object to checks equality for.
+	 * @param other Object to checks equality for.
 	 * @return true if argument has the same sub-expressions on the same side.
 	 * @since  1.0
 	 */
@@ -95,7 +95,7 @@ public class Assignment extends SymbolicExpression{
 	
 	/**
 	 * Evaluates the expression.
-	 * @param  Evironment where all variables are saved.
+	 * @param vars Evironment where all variables are saved.
 	 * @return SymbolicExpression that holds the evaluated expression.
 	 * @since  1.0
 	 */

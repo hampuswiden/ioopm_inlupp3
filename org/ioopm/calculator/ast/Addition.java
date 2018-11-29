@@ -19,9 +19,9 @@ public class Addition extends Binary {
 	
 	/**
 	 * Constructor for addition.
-	 * @param  SymbolicExpression for the expressions left hand side.
-	 * @param  SymbolicExpression for the expressions right hand side.
-	 * @since  1.0
+	 * @param lhs SymbolicExpression for the expressions left hand side.
+	 * @param rhs SymbolicExpression for the expressions right hand side.
+	 * @since 1.0
 	 */
 	public Addition(SymbolicExpression lhs, SymbolicExpression rhs) {
 		super(lhs, rhs);
@@ -49,7 +49,7 @@ public class Addition extends Binary {
 	
 	/**
 	 * Checks for equlity between the input expresison and Addition.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Addition, and has the same sub-expressions.
 	 * @since  1.0
 	 */
@@ -63,7 +63,7 @@ public class Addition extends Binary {
 
 	/**
 	 * Checks for equlity between the input expresison and Addition.
-	 * @param  Object to checks equality for.
+	 * @param  other Object to checks equality for.
 	 * @return true if argument has the same sub-expressions on ethier left hand side or right hand side.
 	 * @since  1.0
 	 */
@@ -98,7 +98,7 @@ public class Addition extends Binary {
 	
 	/**
 	 * Evaluates the expression.
-	 * @param  Evironment where all variables are saved.
+	 * @param vars Evironment where all variables are saved.
 	 * @return SymbolicExpression that holds the evaluated expression.
 	 * @since  1.0
 	 */

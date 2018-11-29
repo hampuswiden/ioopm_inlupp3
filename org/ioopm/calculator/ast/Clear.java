@@ -28,7 +28,7 @@ public class Clear extends Command{
 	
     /**
 	 * Checks for equlity between the input Object and Clear.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true if argument is of type Clear.
 	 * @since  1.0
 	 */
@@ -42,7 +42,7 @@ public class Clear extends Command{
 
 	/**
 	 * Checks for equlity between the input command and Clear.
-	 * @param  Object to check equality for.
+	 * @param other Object to check equality for.
 	 * @return true.
 	 * @since  1.0
 	 */
@@ -70,8 +70,9 @@ public class Clear extends Command{
 	
 	/**
 	 * Tries to evaluate Clear and throws an error.
-	 * @param  Evironment where all variables are saved.
-	 * @throws Throws and error since commands can't be evaluated.
+	 * @param vars Evironment where all variables are saved.
+	 * @return the evaluated symbolic expression
+	 * @throws RuntimeException Throws and error since commands can't be evaluated.
 	 * @since  1.0
 	 */
 	public SymbolicExpression eval(Environment vars) {
