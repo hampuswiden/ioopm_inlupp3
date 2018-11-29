@@ -49,6 +49,9 @@ public class CalculatorParser {
 		
 		while (this.st.ttype == '=') {
 			this.st.nextToken();
+			if (this.st.ttype != this.st.TT_WORD) {
+				throw new SyntaxErrorException("expected a string but got '" + this.st.nval + "'");
+			}
 			if (this.st.sval.equals("pi") || this.st.sval.equals("Answer") || this.st.sval.equals("L") || this.st.sval.equals("e")) {
 	    		throw new IllegalExpressionException("Cannot redefine named constant " + this.st.sval);
 	    	}
