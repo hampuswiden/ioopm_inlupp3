@@ -75,7 +75,6 @@ public class Calculator {
 	            	env.clear();
 	            } else {
 	            	expressions += 1;
-		            System.out.println("result: " + result);
 		            SymbolicExpression eval = result.eval(env);
 		            System.out.println("result: " + eval);
 		            if (eval.isConstant()) {
