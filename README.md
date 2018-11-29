@@ -1,19 +1,13 @@
 # Inlupp 3
 
-I denna fil, _skall_ du skriva instruktioner för
-- hur man bygger programmet
-- hur man kör programmet
-- hur man kör testerna till programmet
-- övrig information att behöva känna till för bygg/körning
+Instructions to build/run the program.
+- `make` to build the program
+- `make run` to build and run the calculator
+- `make runparser` to build and run the parser
+- `make runtest` to build and run the tests
+- `make clean` to clear all the compiled `.class` files
 
-Idealet _bör_ vara att samtliga bygg-/körsteg kan kontrolleras mha `make`:
-- `make` för att bygga programmet
-- `make test` för att bygga och köra testerna i `valgrind`
-- `make run` för att köra programmet (samt först bygga, om så inte är gjort)
 
-Kom slutligen ihåg deadlines. Dessa hittar du på kurshemsidan: [klicka
-här](http://wrigstad.com/ioopm18/#org2090f8e).
+## Design Choices
 
-Happy hacking!
-/ Tobias & labassarna
-
+In order to prevent named constant from being redefined, we chose to extend the parser to handle potential conflict by throwing `SyntaxErrorException`s. When handling errors, the program will continue to run and await input from the user. However, an error message will be displayed in the terminal.
